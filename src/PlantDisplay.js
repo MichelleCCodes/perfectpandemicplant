@@ -39,7 +39,6 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
             continue;
           }
         }
-        console.log('before reset',result)
         reset(sort, result);
       } else if (filteredDifficulty.length > 0) {
         for (let i = 0; i < plants.length; i++) {
@@ -49,7 +48,6 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
             continue;
           }
         }
-        console.log('before reset',result)
         reset(sort, result);
       } else if (filteredLight.length > 0) {
         for (let i = 0; i < plants.length; i++) {
@@ -59,10 +57,8 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
             continue;
           }
         }
-        console.log('before reset',result)
         reset(sort, result);
       } else {
-        console.log('before reset',result)
         sortPrice(sort, result);
         setShownPlants(plants);
       }
