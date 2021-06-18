@@ -27,6 +27,20 @@ export const plantsData = [
       watering: 2,
       description:
         "One of the most popular and hardy of houseplants, he's virtually indestructible and adaptable to almost any condition. Whether you throw full, direct sunlight at him or shove him in the low-light corner of your apartment, he'll grow. And to top it off, he'll go weeks without water if he must.",
+      price: 25,
+    },
+    {
+      name: "King of Air Plants",
+      id: 432943,
+      scientificName: "Tillandsia xerographica",
+      difficulty: "easy",
+      light: "indirect",
+      img:
+        "https://cdn.shopify.com/s/files/1/2781/9558/products/NOTORIOUSAIR-2_1000x.png?v=1587678081",
+      sizes: ["large", "extra large"],
+      watering: 1,
+      description:
+        "His ease of care and resilient demeanor is why he is considered to be one of the greatest air plants of all time. Plus, he's a big fan of pets.",
       price: 18,
     },
     {
