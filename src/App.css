@@ -73,10 +73,10 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0
   align-items: center;
 }
 
-.plantInfo h5{
-  color: #2c2c2e;
-}
-
 .plantInfo h3{
   color: #145f36;
+}
+
+.footer{
+padding: 2em;
 }

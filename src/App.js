@@ -1,7 +1,8 @@
 import './App.css';
 import { useState } from "react";
-import { plantsData } from './data/plantData';
+import { plantsData } from './assets/plantData';
 import PlantDisplay from './PlantDisplay';
+import Footer from './Footer';
 
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,8 +25,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// sizes -> difficulty 
-// color -> light
 
 function App() {
   const [filteredDifficulty, setFilteredDifficulty] = useState([]);
@@ -47,6 +46,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Perfect Pandemic Plants</h1>
       <div className="plantFilters">
       <h3>The perfect plant is here 🌿</h3>
       <div className={classes.root}>
@@ -54,7 +54,6 @@ function App() {
             multiple
             size="small"
             options={difficulty}
-            getOptionLabel={(size) => size}
             onChange={(event, value) => setFilteredDifficulty(value)}
             renderInput={(params) => (
               <TextField {...params} variant="standard" label="Care" />
@@ -65,7 +64,6 @@ function App() {
             size="small"
             options={light}
             onChange={(event, value) => setFilteredLight(value)}
-            getOptionLabel={(color) => color}
             renderInput={(params) => (
               <TextField {...params} variant="standard" label="Lighting" />
             )}
@@ -85,6 +83,7 @@ function App() {
         </div>      
         </div>
         <PlantDisplay plants={plantsData} filteredDifficulty={filteredDifficulty} filteredLight={filteredLight} sort={sort}/>
+        <Footer />
     </div>
   );
 }

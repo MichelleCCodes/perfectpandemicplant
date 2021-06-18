@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Placeholder from './assets/no-match.jpeg'
 
 function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
   useEffect(() => {
@@ -38,6 +39,7 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
             continue;
           }
         }
+        console.log('before reset',result)
         reset(sort, result);
       } else if (filteredDifficulty.length > 0) {
         for (let i = 0; i < plants.length; i++) {
@@ -47,17 +49,20 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
             continue;
           }
         }
+        console.log('before reset',result)
         reset(sort, result);
       } else if (filteredLight.length > 0) {
         for (let i = 0; i < plants.length; i++) {
-          if (filteredLight.includes(plants[i].difficulty)) {
+          if (filteredLight.includes(plants[i].light)) {
             result.push(plants[i]);
           } else {
             continue;
           }
         }
+        console.log('before reset',result)
         reset(sort, result);
       } else {
+        console.log('before reset',result)
         sortPrice(sort, result);
         setShownPlants(plants);
       }
@@ -67,7 +72,7 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
     <div className="sortedResults">
     {shownPlants.length > 0 ? (
         shownPlants.map((plant) => (
-            <div key={plant.dress_id} className="plantGridItem">
+            <div key={plant.id} className="plantGridItem">
               <div className="plantGridImgContainer">
                 <img src={plant.img} alt="dress" />
               <div className="plantInfo">
@@ -81,6 +86,7 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
       ) : (
         <div className="noResults">
           <p>Try another search!</p>
+          <img src={Placeholder} alt="No match found"/>
         </div>
       )}
     </div>
