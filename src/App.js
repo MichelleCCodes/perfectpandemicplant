@@ -12,8 +12,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-const difficulty= ["easy", "medium"];
-const light = ["direct", "indirect"];
+const difficulty= ["easy", "medium", "hard"];
+const light = ["direct", "indirect", "low"];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 200,
   },
 }));
+
+// sizes -> difficulty 
+// color -> light
 
 function App() {
   const [filteredDifficulty, setFilteredDifficulty] = useState([]);
@@ -45,6 +48,7 @@ function App() {
   return (
     <div className="App">
       <div className="plantFilters">
+      <h3>The perfect plant is here 🌿</h3>
       <div className={classes.root}>
           <Autocomplete
             multiple
@@ -53,7 +57,7 @@ function App() {
             getOptionLabel={(size) => size}
             onChange={(event, value) => setFilteredDifficulty(value)}
             renderInput={(params) => (
-              <TextField {...params} variant="standard" label="Difficulty" />
+              <TextField {...params} variant="standard" label="Care" />
             )}
           />
           <Autocomplete

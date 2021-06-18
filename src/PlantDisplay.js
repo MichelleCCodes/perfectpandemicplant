@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./PlantDisplay.css"
 
 function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
   useEffect(() => {
@@ -9,22 +8,73 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
   const [shownPlants, setShownPlants] = useState(plants);
   
   const filteredPlants = (filteredDifficulty, filteredLight, sort, plants) => {
-    console.log(filteredDifficulty, filteredLight, sort, plants);
+    const sortPrice = (action, result) => {
+      if (action === "ascending") {
+        result.sort((a, b) => {
+          return a.price - b.price;
+        });
+      } else if (action === "descending") {
+        result.sort((a, b) => {
+          return b.price - a.price;
+        });
+      } else {
+        return;
+      }
+    };
+      
+      const reset = (sortAction, result) => {
+        sortPrice(sortAction, result);
+        setShownPlants(result);
+      };
+    
+      let result = [];
+      if (filteredDifficulty.length > 0 && filteredLight.length > 0) {
+        for (let i = 0; i < plants.length; i++) {
+          if (filteredDifficulty.includes(plants[i].difficulty) &&
+            filteredLight.includes(plants[i].light)
+          ) {
+            result.push(plants[i]);
+          } else {
+            continue;
+          }
+        }
+        reset(sort, result);
+      } else if (filteredDifficulty.length > 0) {
+        for (let i = 0; i < plants.length; i++) {
+          if (filteredDifficulty.includes(plants[i].difficulty)) {
+            result.push(plants[i]);
+          } else {
+            continue;
+          }
+        }
+        reset(sort, result);
+      } else if (filteredLight.length > 0) {
+        for (let i = 0; i < plants.length; i++) {
+          if (filteredLight.includes(plants[i].difficulty)) {
+            result.push(plants[i]);
+          } else {
+            continue;
+          }
+        }
+        reset(sort, result);
+      } else {
+        sortPrice(sort, result);
+        setShownPlants(plants);
+      }
   };
 
   return (
     <div className="sortedResults">
     {shownPlants.length > 0 ? (
-        shownPlants.map((dressDataItem) => (
-            <div key={dressDataItem.dress_id} className="dressGridItem">
-              <div className="dressGridImgContainer">
-                <img src={dressDataItem["img"]} alt="dress" />
+        shownPlants.map((plant) => (
+            <div key={plant.dress_id} className="plantGridItem">
+              <div className="plantGridImgContainer">
+                <img src={plant.img} alt="dress" />
+              <div className="plantInfo">
+              <p>{`❤️ ${plant.difficulty} care`}</p>
+              <p>{`☀️ ${plant.light} sunlight`}</p>
+                <h3 className="price">${plant.price}</h3>
               </div>
-              <div className="dressInfo">
-                <h5 className="dressInfo">
-                  Difficulty: {dressDataItem["difficulty"]}, Light: {dressDataItem["light"]}
-                </h5>
-                <h3 className="price">${dressDataItem["price"]}</h3>
               </div>
             </div>
           ))
