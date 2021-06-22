@@ -77,6 +77,30 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0
   color: #145f36;
 }
 
+.infoContainer{
+  position: relative;
+}
+
+.plantDetails{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.infoContainer:hover img{
+  opacity: 0.25;
+  transition: .5s ease;
+}
+
+.infoContainer:hover .plantDetails{
+  opacity:1;
+}
+
 .footer{
 padding: 2em;
 }
