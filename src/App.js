@@ -47,6 +47,7 @@ function App() {
   return (
     <div className="App">
       <h1>Perfect Pandemic Plants</h1>
+      <p>A specially curated list of popular houseplants.</p>
       <div className="plantFilters">
       <h3>The perfect plant is here 🌿</h3>
       <div className={classes.root}>
