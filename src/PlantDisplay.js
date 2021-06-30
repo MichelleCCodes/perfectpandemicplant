@@ -60,8 +60,7 @@ function PlantDisplay({ filteredDifficulty, filteredLight, sort, plants }) {
       }
       reset(sort, result);
     } else {
-      sortPrice(sort, result);
-      setShownPlants(plants);
+      reset(sort, plants)
     }
   };
 
